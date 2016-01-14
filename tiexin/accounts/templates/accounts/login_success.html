@@ -1,0 +1,9 @@
+{% extends "accounts/base.html" %}
+
+{% block content %}
+	<p>You are successfully logged in as user: {{user}}</p>
+
+	<p>Now you can log out. </p>
+	<a href="{% url 'accounts:logout' %}"> Logout </a>
+
+{% endblock %}
