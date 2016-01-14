@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.generic.views import TemplateView
+from django.views.generic import TemplateView
 
 # Create your views here.
 def login_success(request):
