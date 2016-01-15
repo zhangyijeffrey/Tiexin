@@ -5,7 +5,8 @@ from . import views
 app_name = 'accounts'
 
 urlpatterns = [
-	url(r'^login/$', auth_views.login, name='login', kwargs={'template_name': 'accounts/login.html'}),
-	url(r'^login/success/$', views.login_success.as_view()),
-	url(r'^logout/$', auth_views.logout, name='logout', kwargs={'next_page': 'accounts:login'}),
+	url(r'^login/$', views.Login.as_view(), name='login'),
+	url(r'^login-weixin/$', views.LoginWeixin.as_view(), name='login-weixin' ),
+	url(r'^login-success/$', views.LoginSuccess.as_view(), name='login-success'),
+	url(r'^logout/$', views.Logout.as_view(), name='logout'),
 ]
