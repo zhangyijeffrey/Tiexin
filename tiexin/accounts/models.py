@@ -28,22 +28,26 @@ class WeixinAuth(models.Model):
 	expires_in = models.PositiveIntegerField()
 	refresh_token = models.CharField(max_length=1024)
 	scope = models.CharField(max_length=400)
+	last_modified = models.DateTimeField(auto_now=True)
 
 class WeixinProfile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	openid = models.CharField(max_length=100)
 	nickname = models.CharField(max_length=100)
 	sex = models.PositiveSmallIntegerField(choices=((1, 'M'),(2, 'F'), (0, 'X')))
 	province = models.CharField(max_length=20)
 	city = models.CharField(max_length=20)
-	country = models.CharField(max_length=10)
+	country = models.CharField(max_length=20)
 	headimgurl = models.URLField(max_length=300)
 	privilege = models.CharField(max_length=100)
 	unionid = models.CharField(max_length=100)
+	last_modified = models.DateTimeField(auto_now=True)
 
 class TiexinProfile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	cell = models.CharField(max_length=20)
 	qq = models.CharField(max_length=20)
 	age = models.PositiveSmallIntegerField()
+	last_modified = models.DateTimeField(auto_now=True)
 
 

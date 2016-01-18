@@ -122,7 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Los_Angeles'
 #TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
@@ -139,5 +139,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,o) for o in os.listdir(BASE_DIR) if os.path.isdir(os.path.join(BASE_DIR,o))]
 
 # Website root URL
-WEB_URL = 'http://www.tiexinonline.com'
+#WEB_URL = 'http://www.tiexinonline.com'
+WEB_URL = 'http://www.google.com'
 
