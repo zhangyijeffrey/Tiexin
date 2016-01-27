@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+	<p> You are now logged in as: {{user}} </p>
+	<form method="post">
+		{% csrf_token %}
+		{{form.as_p}}
+		<input type="submit" value="Submit"/>
+	</form>
+
+{% endblock %}

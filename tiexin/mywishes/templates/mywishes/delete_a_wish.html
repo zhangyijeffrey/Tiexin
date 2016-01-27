@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+	<p> You are now logged in as: {{user}} </p>
+	<p>Are you sure you want to delete post {{wish.id}}?</p>
+	<p>Title: {{wish.title}}
+
+	<form method="post" action=".">
+		{% csrf_token %}
+		<input type="submit" value="Delete">
+	</form>
+
+{% endblock %}

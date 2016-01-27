@@ -7,16 +7,22 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from .models import WeixinAuth, WeixinProfile
-
+from datetime import datetime, timedelta
+import pytz
 
 # Create your views here.
 class Login(TemplateView):
 	template_name = 'accounts/login.html'
 
+	def get_context_data(self, **kwargs):
+		context = super(Login, self).get_context_data(**kwargs)
+		context['next'] = self.request.GET.get('next', reverse('accounts:login-success'))
+		return context
+
 class LoginWeixin(RedirectView):
 
 	def get_redirect_url(self, *args, **kwargs):
-		url = reverse('accounts:auth-weixin')
+		url = reverse('accounts:auth-weixin') + '?next=' + self.request.GET.get('next')
 
 		# user = self.request.user
 		# if user.is_authenticated():
@@ -52,6 +58,10 @@ class AuthWeixin(RedirectView):
 				# user_profile = settings.TEST_USER_PROFILE
 				# user_profile['user'] = user
 				# wx_profile = WeixinProfile.objects.create(**user_profile)
+				tz = pytz.timezone(settings.TIME_ZONE)
+				if abs(datetime.now(tz) - user.weixinprofile.last_modified) > timedelta(seconds=1):
+					user_profile = settings.TEST_USER_PROFILE
+					WeixinProfile.objects.filter(user=user).update(**user_profile)
 
 			except User.DoesNotExist:
 				# get user profile from Weixin
@@ -84,7 +94,8 @@ class AuthWeixin(RedirectView):
 			login(self.request, auth_user)
 
 			# direct to homepage with personal info
-			url = reverse('accounts:login-success')
+			# url = reverse('accounts:login-success')
+			url = self.request.GET.get('next')
 
 
 		return url

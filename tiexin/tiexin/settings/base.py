@@ -39,6 +39,7 @@ PREREQ_APPS = [
 
 PROJECT_APPS = [
     'accounts',
+    'mywishes',
 ]
 
 INSTALLED_APPS = PREREQ_APPS + PROJECT_APPS
@@ -67,6 +68,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.core.context_processors.media',
+                'django.core.context_processors.static',
             ],
         },
     },
@@ -138,7 +141,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,o) for o in os.listdir(BASE_DIR) if os.path.isdir(os.path.join(BASE_DIR,o))]
 
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
 # Website root URL
 #WEB_URL = 'http://www.tiexinonline.com'
-WEB_URL = 'http://www.google.com'
+WEB_URL = 'www.google.com'
 

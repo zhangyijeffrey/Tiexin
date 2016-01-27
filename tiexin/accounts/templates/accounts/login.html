@@ -4,8 +4,9 @@
 	<section id="banner">
 		<img src="{%static 'images/wechat.png'%}" height="200" width="200"/>
 		<p>用WeChat登录</p>
+
 		<ul class="actions">
-			<li><a href="{% url 'accounts:login-weixin' %}" class="button special">登录</a></li>
+			<li><a href="{%url 'accounts:login-weixin' %}?next={{next}}" class="button special">登录</a></li>
 		</ul>
 	</section>
 {% endblock %}
