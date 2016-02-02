@@ -1,13 +1,22 @@
 {% extends "base.html" %}
-{% load static %}
-{% block content %}
-	<section id="banner">
-		<img src="{%static 'images/wechat.png'%}" height="200" width="200"/>
-		<p>用WeChat登录</p>
+{% load staticfiles %}
 
-		<ul class="actions">
-			<li><a href="{%url 'accounts:login-weixin' %}?next={{next}}" class="button special">登录</a></li>
-		</ul>
-	</section>
+{% block custom_css %}
+		<link href="{%static 'accounts/css/login.css'%}" rel="stylesheet"/>
+{% endblock %}
+
+
+{% block content %}
+
+	<div class="full-height-page container-fluid">
+
+		<img class="weixin-logo center-logo" src="{%static 'accounts/images/wechat.png'%}"/>
+
+		<div class="login-button">
+			<a class="btn btn-lg btn-success" href="{%url 'accounts:login-weixin' %}?next={{next}}" role="botton" >微信登录</a>
+		</div>
+
+	</div>
+
 {% endblock %}
 

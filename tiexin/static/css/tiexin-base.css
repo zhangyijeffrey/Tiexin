@@ -1,0 +1,118 @@
+/*!
+ * Tiexin Theme 
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, tahoma, verdana, 宋体, SimSun, 华文细黑, STXihei, sans-serif;
+}
+
+
+/*Navbar*/
+.navbar-default {
+    border-color: rgba(255, 255, 255,.3);
+    background-color: transparent;
+}
+
+.navbar-default .navbar-header{
+	background-color: rgba(0, 0, 1, 0.5);
+}
+.navbar-default .navbar-header .navbar-brand {
+    color: #fff;
+}
+
+.navbar-default .navbar-header .menu-logo {
+	float: right;
+}
+
+.navbar-default .navbar-header .navbar-brand:hover,
+.navbar-default .navbar-header .navbar-brand:focus {
+    color: #fff;
+}
+
+
+.navbar-collapse-target {
+	width: 20px;
+}
+.navbar-fixed-top {
+	border: 0px;
+}
+
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-nav {
+	border-width: 0px;
+	background-color: transparent;
+}
+
+.navbar-default .navbar-form{
+	padding: 0px 10px;
+	box-shadow: none;
+	border: 0px;
+}
+
+.navbar-default .navbar-collapse .btn-group-vertical{
+	float: right;
+	margin-right: 3px;
+}
+
+
+@media(min-width:768px) {
+	.navbar-default{
+		background-color: rgba(0, 0, 1, 0.5);
+	}
+
+	.navbar-default .container {
+		width: 95%;
+		margin-left: 0px;
+	}
+
+	.navbar-default .navbar-header{
+		background-color: transparent;
+	}
+
+	.navbar-default .navbar-nav .btn{
+		height: 50px;
+		background-color: transparent;
+		border-color: transparent;
+	}
+
+    .navbar-default.affix {
+        border-color: rgba(34,34,34,.05);
+        background-color: #fff;
+    }
+
+    .navbar-default.affix .navbar-header .navbar-brand {
+        font-size: 14px;
+        color: #f05f40;
+    }
+
+    .navbar-default.affix .navbar-header .navbar-brand:hover,
+    .navbar-default.affix .navbar-header .navbar-brand:focus {
+        color: #eb3812;
+    }
+
+}
+
+/*Header*/
+header {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+    background-image: url(../images/header_image.jpg);
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+

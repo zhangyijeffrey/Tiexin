@@ -1,0 +1,43 @@
+/*!
+ * Tiexin Login Theme 
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/*login-page*/
+
+/* override the background image */
+/*header{
+    background-image: none;
+}*/
+
+.full-height-page {
+    position: relative;
+    height: 100%;
+}
+
+.weixin-logo {
+    height: 200px;
+    width: 200px;
+}
+
+.center-logo {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.login-button {
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+}
+
+.login-button .btn {
+    border-radius: 50px;
+}
+
+    
