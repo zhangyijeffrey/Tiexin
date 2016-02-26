@@ -1,0 +1,63 @@
+/*!
+ * Tiexin Theme 
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/*user-sell-a-toy page*/
+
+/* override the background image */
+/*header{
+    background-image: none;
+}*/
+
+
+form .form-group label{
+    font-size: 14px;
+    font-weight: normal;
+}
+
+form .form-control-feedback{
+    margin-right: -17px;
+}
+
+form #image-label{
+    margin-top: 10px;
+}
+
+form #input-files .input-group{
+    width: 100%;
+    margin: 5px 0px;
+    display: block;
+}
+
+form #input-files .input-group .file-input{
+    width: 100%;
+    margin: 5px 0px;
+}
+
+form #input-files .input-group a span{
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+form #input-files .input-group .btn-cancel{
+    position: absolute;
+    right: -12px;
+    bottom: 0px;
+    margin: 5px;
+    z-index: 10;
+    color: #ff9900;
+}
+
+form #input-files .input-group .btn-cancel:hover{
+    color: #a94442;
+}
+
+
+form .form-group .btn-submit{
+    width: 100%;
+    margin-top: -10px;
+}

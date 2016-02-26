@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
     <title>贴心</title>
 
     <!-- Bootstrap -->
@@ -64,10 +65,14 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-collapse-target">
         	    <div class="nav navbar-nav navbar-right btn-group btn-group-lg" id="navbar-btn-group">
-					<a href="/accounts/login" class="btn btn-primary" role="button" >登录</a>
-				    <a href="#" class="btn btn-primary" role="button">我的愿望</a>
-				    <a type="#" class="btn btn-primary" role="button">用户资料</a>
-					<a type="#" class="btn btn-primary" role="button">联系我们</a>
+					<a href="/accounts/login" class="btn btn-primary" role="button" >主页</a>
+				    <a href="#" class="btn btn-primary" role="button">我的订单</a>
+                    <a href="/accounts/logout/" class="btn btn-primary" role="button">
+                        {% if user.is_authenticated %}登出:{{user.weixinprofile.nickname}}
+                        {% else %} 登录
+                        {% endif %}
+
+                    </a>
             	</div>
             </div>
             <!-- /.navbar-collapse -->
@@ -80,7 +85,6 @@
     	{% block content %}
     	{% endblock content %}
     </header>
-
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -99,6 +103,9 @@
     	$(document).ready(arrangeNavbar)
     	$(window).on('resize', arrangeNavbar)
     </script>
+
+    {% block custom_js %}
+    {% endblock custom_js %}
 
 
 </body>

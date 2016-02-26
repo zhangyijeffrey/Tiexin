@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block custom_css %}
+<link href="{%static 'toys/css/user_sell_confirm.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+	<div class="container div-margin-top full-width">
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+				<div class="toy-container row">
+					<div class="col-xs-6 image-container">
+						{% if toy.image1_thumbnail %}
+						<img class="img-responsive" src="{{toy.image1_thumbnail.url}}"/>
+						{% else %}
+						<img class="img-responsive" src="{{MEDIA_URL}}toys/question/question_thumbnail.jpg"/>
+						{% endif %}
+					</div>
+					<div class="col-xs-6 info-container">
+						<div class="toy-info toy-title">{{toy.title}}</div>
+						<div class="toy-info toy-brand">{{toy.brand}}</div>
+						{% if toy.original_cost %}
+						<div class="toy-info toy-original-cost">￥ {{toy.original_cost}}</div>
+						{% endif%}
+
+						{% if toy.has_original_receipt == "yes" %}
+						<div class="toy-aux-info">- 有原始票据</div>
+						{% else %}
+						<div class="toy-aux-info">- 无原始票据</div>
+						{% endif%}
+
+						<div class="toy-aux-info ">- 购买时间在{{toy.purchase_time}}</div>
+						<div class="toy-aux-info ">- {{toy.exterior}}</div>
+						<div class="toy-aux-info ">- {{toy.functionality}}</div>
+						{% if toy.description != "" %}
+						<div class="toy-aux-info">- 补充描述：
+							<textarea >{{toy.description}}</textarea>
+						</div>
+						{% endif%}
+					</div>
+	
+				</div>
+
+				<div class="quote-container">
+					<h5> 基于您提供的信息，您的玩具估价为： </h5>
+					{% if toy.instant_quote_point %}
+					<h1> {{toy.instant_quote_point}} 点</h1>
+					{% else %}
+					<h1> {{toy.instant_quote_discount}}折</h1>
+					{% endif %}
+				</div>
+
+
+				<!-- Trigger the modal with a button -->
+				<div class="submit-container">
+					<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#reject-quote">拒绝估价</button>
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#accept-quote">接受估价</button>
+				</div>
+
+				<!-- Modal -->
+				<div id="reject-quote" class="modal fade" role="dialog">
+					<div class="modal-dialog modal-sm">
+				    <!-- Modal content-->
+					    <div class="modal-content">
+						    <div class="modal-header">
+								<h5 class="modal-title">您确定要拒绝估价吗？</h5>
+							</div>
+						    <div class="modal-body">
+						      	<form method="post">
+									{% csrf_token %}
+							        <input type="submit" name="cancel" class="btn btn-danger btn-submit" value="确定"></input>
+			    				    <button type="button" class="btn btn-success" data-dismiss="modal">取消</button>
+						   		</form>
+						    </div>
+					    </div>
+					</div>
+				</div>
+
+				<div id="accept-quote" class="modal fade" role="dialog">
+					<div class="modal-dialog modal-sm">
+				    <!-- Modal content-->
+					    <div class="modal-content">
+						    <div class="modal-header">
+								<h5 class="modal-title">请提供您的联系电话方便我们下一步联系</h5>
+							</div>
+						    <div class="modal-body">
+						      	<form method="post">
+									{% csrf_token %}
+									<div class="row cell-input">
+										{% if user_cell == "" %}
+											<input type="text" name="user-cell" class="form-control" placeholder="无联系电话记录">
+										{% else %}
+											<input type="text" name="user-cell" class="form-control" placeholder="已保存电话:{{user_cell}}">										
+										{% endif %}
+									</div>
+									<div class="row">
+				    				    <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+				    				    <input type="submit" name="submit" class="btn btn-success btn-submit" value="提交"></input>
+				    				</div>
+						   		</form>
+						    </div>
+					    </div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block custom_js %}
+
+{% endblock %}

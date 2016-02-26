@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^$', RedirectView.as_view(url='accounts/login')),
 	url(r'^accounts/', include('accounts.urls', namespace='accounts')),
 	url(r'^mywishes/', include('mywishes.urls', namespace='mywishes')),
+    url(r'^toys/', include('toys.urls', namespace='toys')),
     url(r'^admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

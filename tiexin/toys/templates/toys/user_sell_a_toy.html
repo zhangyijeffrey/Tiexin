@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block custom_css %}
+	<link href="{%static 'toys/css/user_sell_a_toy.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+	<div class="container div-margin-top full-width">
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">
+				<form method="post" enctype="multipart/form-data" class="horizontal-form">
+					{% csrf_token %}
+
+					{% for field in form %}
+					{% if field.errors %}
+					<div class="form-group row has-error has-feedback">
+					{% else %}
+					<div class="form-group row">
+					{% endif %}
+						<label for="{{field.id_for_label}}" class="col-xs-4 control-label no-padding"> <span>{{field.label}} {% if field.field.required%} * {%endif%}</span></label>
+
+						<div class="col-xs-8">
+
+							{% if field == form.original_cost %}
+								<div class="input-group">
+									{{field}}
+									<div class="input-group-addon">元</div>
+								</div>
+							{% else %}
+								{{field}}
+							{% endif %}
+
+							{% if field.errors %}
+						    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+	    					{% endif %}
+						</div>
+					</div>
+					{% endfor %}
+
+					<div class="form-group row">
+						<label class="col-xs-4 control-label no-padding" id="image-label">图片</label>
+						<div class="col-xs-8" id="input-files">
+							<div class="input-group row">
+								<input type="file" id="image1" name="image1" class="btn btn-primary file-input" title="添加图片" data-filename-placement="inside">
+								<span class="cancel-file btn btn-cancel hide">X</span>
+							</div>
+
+							<div class="input-group row">
+								<input type="file" name="image2" class="btn btn-primary file-input" title="添加图片" data-filename-placement="inside">
+								<span class="cancel-file btn btn-cancel hide">X</span>
+							</div>
+
+							<div class="input-group row">
+								<input type="file" name="image3" class="btn btn-primary file-input" title="添加图片" data-filename-placement="inside">
+								<span class="cancel-file btn btn-cancel hide">X</span>
+							</div>
+
+							<div class="input-group row">
+								<input type="file" name="image4" class="btn btn-primary file-input" title="添加图片" data-filename-placement="inside">
+								<span class="cancel-file btn btn-cancel hide">X</span>
+							</div>
+
+							<div class="input-group row">
+								<input type="file" name="image5" class="btn btn-primary file-input" title="添加图片" data-filename-placement="inside">
+								<span class="cancel-file btn btn-cancel hide">X</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-xs-4"></div>
+						<div class="col-xs-8">
+							<input type="submit" class="btn btn-success btn-submit" value="获取估值"/>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block custom_js %}
+	<script src="{% static 'toys/js/bootstrap.file-input.js'%}"></script>
+	<script>
+		// initialize the file input buttons
+		$(document).ready(function(){
+			$(".file-input").bootstrapFileInput();
+			$("#input-files").children().addClass("hide");
+			$("#input-files").children().first().removeClass("hide");
+		});
+
+		// after choosing a file, add the cancel button and another file select button
+		$("#input-files").children().on("change", function(){
+			$(this).children(".btn-cancel").removeClass("hide");
+			$(this).next().removeClass("hide");
+		});
+
+		// remove files with the cancel button
+		$(".btn-cancel").on("click", function(){
+			$(this).addClass("hide");
+			$(this).prev().children("span").text("添加图片");
+			var input_elem = $(this).prev().children("input");
+			input_elem.wrap('<form>').parent('form').trigger('reset');
+		    input_elem.unwrap();
+		})
+	</script>
+	<script type="text/javascript"> 
+		function stopRKey(evt) { 
+		  var evt = (evt) ? evt : ((event) ? event : null); 
+		  var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); 
+		  if ((evt.keyCode == 13) && (node.type=="text"))  {return false;} 
+		} 
+		document.onkeypress = stopRKey; 
+	</script>
+{% endblock %}

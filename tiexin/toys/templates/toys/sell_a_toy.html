@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block custom_css %}
+	<link href="{%static 'toys/css/sell_a_toy.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+	<div class="container div-margin-top full-width">
+		<div class="row">
+			<div class="col-sm-6 col-sm-offset-3">
+				<form method="post" enctype="multipart/form-data" class="horizontal-form">
+					{% csrf_token %}
+					{% if form.title.errors %}
+					<div class="form-group row has-error has-feedback">
+					{% else %}
+					<div class="form-group row">
+					{% endif %}
+						<label for="id_title" class="col-sm-3 control-label no-padding"> {{form.title.label}}</label>
+						<div class="col-sm-6 ">
+							{{form.title}}
+							{% if form.title.errors %}
+						    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+						    <span id="id_title_status" class="sr-only">(error)</span>
+	    					{% endif %}
+						</div>
+					</div>
+
+					{% if form.brand.errors %}
+					<div class="form-group row has-error has-feedback">
+					{% else %}
+					<div class="form-group row">
+					{%endif%}
+						<label for="id_brand" class="col-sm-3 control-label"> {{form.brand.label}}</label>
+						<div class="col-sm-6">
+							{{form.brand}}
+							{% if form.brand.errors %}
+						    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+						    <span id="id_brand_status" class="sr-only">(error)</span>
+	    					{% endif %}
+
+						</div>
+					</div>
+
+					{% if form.description.errors %}
+					<div class="form-group row has-error has-feedback">
+					{% else %}
+					<div class="form-group row">
+					{%endif%}
+						<label for="id_description" class="col-sm-3 control-label"> {{form.description.label}}</label>
+						<div class="col-sm-6">
+							{{form.description}}
+							{% if form.description.errors %}
+						    <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+						    <span id="id_description_status" class="sr-only">(error)</span>
+	    					{% endif %}
+						</div>
+					</div>
+
+					{% if form.sold_by_propose_price.errors %}
+					<div class="form-group row has-error has-feedback">
+					{% else %}
+					<div class="form-group row">
+					{%endif%}
+						<label for="id_sold_by_propose_price" class="col-sm-3 control-label"> {{form.sold_by_propose_price.label}}</label>
+						<div class="col-sm-6">
+							<div class="input-group">
+								{{form.sold_by_propose_price}}
+								<div class="input-group-addon">元</div>
+							</div>
+							{% if form.sold_by_propose_price.errors %}
+						    <span id="sold_by_propose_price_error" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+						    <span id="id_sold_by_propose_price_status" class="sr-only">(error)</span>
+	    					{% endif %}
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label class="col-sm-3 control-label">上传图片</label>
+						<div class="col-sm-6" id="input-files">
+							<div class="input-group row">
+								<input type="file" id="image1" name="image1" class="btn btn-primary file-input" title="添加图片" data-filename-placement="inside">
+								<span class="cancel-file btn btn-cancel hide">X</span>
+							</div>
+
+							<div class="input-group row">
+								<input type="file" name="image2" class="btn btn-primary file-input" title="添加图片" data-filename-placement="inside">
+								<span class="cancel-file btn btn-cancel hide">X</span>
+							</div>
+
+							<div class="input-group row">
+								<input type="file" name="image3" class="btn btn-primary file-input" title="添加图片" data-filename-placement="inside">
+								<span class="cancel-file btn btn-cancel hide">X</span>
+							</div>
+
+							<div class="input-group row">
+								<input type="file" name="image4" class="btn btn-primary file-input" title="添加图片" data-filename-placement="inside">
+								<span class="cancel-file btn btn-cancel hide">X</span>
+							</div>
+
+							<div class="input-group row">
+								<input type="file" name="image5" class="btn btn-primary file-input" title="添加图片" data-filename-placement="inside">
+								<span class="cancel-file btn btn-cancel hide">X</span>
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<div class="form-group row">
+							<div class="col-sm-3"></div>
+							<div class="col-sm-6">
+								<input type="submit" name="cancel" class="btn btn-primary btn-submit" value="取消"/>
+								<input type="submit" class="btn btn-primary btn-submit" value="提交"/>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
+{% block custom_js %}
+	<script src="{% static 'toys/js/bootstrap.file-input.js'%}"></script>
+	<script>
+		$(document).ready(function(){
+			$(".file-input").bootstrapFileInput();
+			$("#input-files").children().addClass("hide");
+			$("#input-files").children().first().removeClass("hide");
+		});
+
+		$("#input-files").children().on("change", function(){
+			$(this).children(".btn-cancel").removeClass("hide");
+			$(this).next().removeClass("hide");
+		});
+
+		$(".btn-cancel").on("click", function(){
+			$(this).addClass("hide");
+			$(this).prev().children("span").text("添加图片");
+			var input_elem = $(this).prev().children("input");
+			input_elem.wrap('<form>').parent('form').trigger('reset');
+		    input_elem.unwrap();
+		})
+	</script>
+	<script type="text/javascript"> 
+	function stopRKey(evt) { 
+	  var evt = (evt) ? evt : ((event) ? event : null); 
+	  var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null); 
+	  if ((evt.keyCode == 13) && (node.type=="text"))  {return false;} 
+	} 
+	document.onkeypress = stopRKey; 
+	</script>
+{% endblock %}

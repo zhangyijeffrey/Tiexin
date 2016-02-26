@@ -1,0 +1,115 @@
+/*!
+ * Tiexin Theme 
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/*user-sell-confirm page*/
+
+/* override the background image */
+/*header{
+    background-image: none;
+}*/
+
+.toy-container {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d9d9d9;
+}
+
+.image-container {
+    padding: 10px;
+}
+
+.image-container img{
+    max-height: 35vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.info-container {
+    padding: 10px;
+    padding-top: 15px;
+    text-align: left;
+    font-size: 12px;
+    line-height: 1.5em;
+    max-height: 35vh;
+    overflow-y: scroll;
+    text-overflow-y: ellipsis;
+
+}
+
+.info-container .toy-info {
+    line-height: 1.5em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.info-container .toy-title {
+    font-family: Microsoft YaHei;
+    white-space: normal;
+}
+
+.info-container .toy-brand {
+    font-size: 10px;
+    opacity: 0.8;
+}
+
+.info-container .toy-aux-info{
+    line-height: 1.5em;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+
+.info-container textarea {
+     width: 100%;
+     border: 0px;
+     padding-left: 5px;
+     resize: none;
+     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+     box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.quote-container {
+    margin-top: 20px;
+}
+
+.submit-container .btn,
+.modal .btn{
+    margin: 10px;
+}
+
+.modal{
+    top: 25%;
+}
+
+.modal .cell-input{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media(min-width:768px) {
+    .info-container {
+        font-size: 14px;
+     }
+
+    .info-container .toy-info {
+        line-height: 1.5em;
+    }
+
+    .info-container .toy-brand {
+        font-size: 12px;
+        opacity: 0.8;
+    }
+
+    .info-container .toy-aux-info{
+        /*line-height: 1.5em;*/
+        font-weight: bold;
+        font-size: 14px;
+    }
+}
+
+

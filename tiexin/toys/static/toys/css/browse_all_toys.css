@@ -1,0 +1,62 @@
+/*!
+ * Tiexin Theme 
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/*browse_all_toys page*/
+
+/* override the background image */
+/*header{
+    background-image: none;
+}*/
+
+
+.toy-container {
+    max-height: 300px;
+    overflow: hidden;
+    padding: 10px 20px;
+    line-height: 1.5em;
+    margin: 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d9d9d9;
+}
+
+.toy-price {
+    padding-top: 5px;
+    font-size: 12px;
+    line-height: 2em;
+}
+
+.toy-title {
+    font-weight: bold;
+    font-size: 12px;
+    color: #3366ff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
+.toy-brand {
+    font-size: 10px;
+    color: black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pagination ul li{
+    display: inline;
+    padding: 5px;
+}
+
+.pagination ul .active-pg-block:hover{
+    background-color: white;
+}
+
+.pagination ul .inactive-pg-block{
+    color: #808080;
+}
+

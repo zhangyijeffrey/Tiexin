@@ -45,9 +45,9 @@ class WeixinProfile(models.Model):
 
 class TiexinProfile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	cell = models.CharField(max_length=20)
-	qq = models.CharField(max_length=20)
-	age = models.PositiveSmallIntegerField()
+	cell = models.CharField(max_length=20, blank=True)
+	qq = models.CharField(max_length=20, blank=True)
+	age = models.PositiveSmallIntegerField(null=True, blank=True)
 	last_modified = models.DateTimeField(auto_now=True)
 
 

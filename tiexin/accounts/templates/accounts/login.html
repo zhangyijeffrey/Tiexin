@@ -2,20 +2,19 @@
 {% load staticfiles %}
 
 {% block custom_css %}
-		<link href="{%static 'accounts/css/login.css'%}" rel="stylesheet"/>
+	<link href="{%static 'accounts/css/login.css'%}" rel="stylesheet"/>
 {% endblock %}
-
 
 {% block content %}
 
-	<div class="full-height-page container-fluid">
+	<div class="container-fluid">
+		<div class="weixin-login">
+			<img class="weixin-logo" src="{%static 'accounts/images/wechat.png'%}"/>
 
-		<img class="weixin-logo center-logo" src="{%static 'accounts/images/wechat.png'%}"/>
-
-		<div class="login-button">
-			<a class="btn btn-lg btn-success" href="{%url 'accounts:login-weixin' %}?next={{next}}" role="botton" >微信登录</a>
+			<div class="login-button">
+				<a class="btn btn-lg btn-success" href="{%url 'accounts:login-weixin' %}?next={{next}}" role="botton">微信登录</a>
+			</div>
 		</div>
-
 	</div>
 
 {% endblock %}

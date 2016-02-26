@@ -35,11 +35,13 @@ PREREQ_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrapform',
 ]
 
 PROJECT_APPS = [
     'accounts',
-    'mywishes',
+    'toys',
+    'mywishes'
 ]
 
 INSTALLED_APPS = PREREQ_APPS + PROJECT_APPS
