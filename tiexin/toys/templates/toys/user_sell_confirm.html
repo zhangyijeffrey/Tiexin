@@ -24,6 +24,7 @@
 						<div class="toy-info toy-original-cost">￥ {{toy.original_cost}}</div>
 						{% endif%}
 
+						<div class="toy-aux-info">- 购买于 {{ toy.original_vendor}} </div>
 						{% if toy.has_original_receipt == "yes" %}
 						<div class="toy-aux-info">- 有原始票据</div>
 						{% else %}
@@ -35,7 +36,7 @@
 						<div class="toy-aux-info ">- {{toy.functionality}}</div>
 						{% if toy.description != "" %}
 						<div class="toy-aux-info">- 补充描述：
-							<textarea >{{toy.description}}</textarea>
+							<pre class="toy-aux-info"> {{toy.description}}</pre>
 						</div>
 						{% endif%}
 					</div>

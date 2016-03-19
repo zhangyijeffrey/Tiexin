@@ -1,3 +1,6 @@
+ #!/usr/bin/python
+ # -*- coding: utf-8 -*-
+
 from __future__ import unicode_literals
 
 from django.db import models
@@ -30,6 +33,9 @@ class WeixinAuth(models.Model):
 	scope = models.CharField(max_length=400)
 	last_modified = models.DateTimeField(auto_now=True)
 
+	def __unicode__(self):
+		return self.user.weixinprofile.nickname
+
 class WeixinProfile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	openid = models.CharField(max_length=100)
@@ -43,11 +49,17 @@ class WeixinProfile(models.Model):
 	unionid = models.CharField(max_length=100)
 	last_modified = models.DateTimeField(auto_now=True)
 
+	def __unicode__(self):
+		return self.nickname
+
 class TiexinProfile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	cell = models.CharField(max_length=20, blank=True)
 	qq = models.CharField(max_length=20, blank=True)
 	age = models.PositiveSmallIntegerField(null=True, blank=True)
 	last_modified = models.DateTimeField(auto_now=True)
+	is_staff = models.BooleanField(default=False)
 
+	def __unicode__(self):
+		return self.user.weixinprofile.nickname
 

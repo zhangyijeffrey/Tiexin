@@ -3,6 +3,7 @@
 
 {% block custom_css %}
 	<link href="{%static 'toys/css/user_sell_a_toy.css' %}" rel="stylesheet"/>
+	<link href="{%static 'toys/css/user_update_a_toy.css' %}" rel="stylesheet"/>
 {% endblock %}
 
 {% block content %}
@@ -21,7 +22,6 @@
 						<label for="{{field.id_for_label}}" class="col-xs-4 control-label no-padding"> <span>{{field.label}} {% if field.field.required%} * {%endif%}</span></label>
 
 						<div class="col-xs-8">
-
 							{% if field == form.original_cost %}
 								<div class="input-group">
 									{{field}}
@@ -38,9 +38,17 @@
 					</div>
 					{% endfor %}
 
+					<div class="form-group row">
+						<label class="col-xs-4 control-label no-padding" id="uploaded-image-label">已上传图片</label>
+						<div class="col-xs-8 row uploaded-images">
+							{% for image_url in image_urls%}
+							<img class="img-responsive uploaded-thumbnail" src="{{image_url}}"/>
+							{% endfor %}
+						</div>
+					</div>
 
 					<div class="form-group row">
-						<label class="col-xs-4 control-label no-padding" id="image-label">图片(<=5张)</label>
+						<label class="col-xs-4 control-label no-padding" id="image-label">图片</label>
 						<div class="col-xs-8" id="input-files">
 							<div class="input-group row">
 								<input type="file" name="image1" class="btn btn-primary file-input" title="添加图片" data-filename-placement="inside">
@@ -89,7 +97,19 @@
 		$(document).ready(function(){
 			$(".file-input").bootstrapFileInput();
 			$("#input-files").children().addClass("hide");
-			$("#input-files").children().first().removeClass("hide");
+			var image_start_num = $(".uploaded-images").find(".uploaded-thumbnail").length+1
+			if(image_start_num==6){
+				$("#image-label").text("");
+			}else{
+				$("#image-label").text("图片");
+			}
+			if(image_start_num==1){
+				$("#uploaded-image-label").text("");
+			}else{
+				$("#uploaded-image-label").text("已上传图片");
+			}
+
+			$("#input-files .input-group:nth-child("+image_start_num+")").removeClass("hide");
 		});
 
 		// after choosing a file, add the cancel button and another file select button

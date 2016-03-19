@@ -1,0 +1,24 @@
+/*!
+ * Tiexin Theme 
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/*user-update-a-toy page*/
+
+/* override the background image */
+/*header{
+    background-image: none;
+}*/
+
+form .form-group .uploaded-images{
+    padding-left: 12px;
+    padding-right: 12px;
+    margin: 0px;
+}
+form .form-group .uploaded-thumbnail{
+    max-height: 50px;
+    margin: 0px;
+    display: inline;
+    float: left;
+}

@@ -71,3 +71,11 @@ class UserSellAToyForm(forms.ModelForm):
 			'functionality': forms.Select(choices=FUNCTIONALITY_CHOICES, attrs={'class': 'form-control'}),
 			'description': forms.Textarea(attrs={'class': 'form-control', 'rows': '2'}),
 		 }
+
+class ReceiveAndApproveForm(forms.ModelForm):
+	class Meta:
+		model = ToySource
+		exclude = []
+
+
+
